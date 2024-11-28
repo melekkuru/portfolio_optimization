@@ -35,11 +35,12 @@ Follow these instructions to set up and run the project on your local machine.
    ```
 
 2. **Create and Activate a Virtual Environment:**
-   ```bash
-   python -m venv venv
+    ```
+    python -m venv venv
    source venv/bin/activate    # For macOS/Linux
-   .env\Scripts\Activate     # For Windows
-   ```
+   venv\Scripts\activate       # For Windows (Command Prompt)
+   .\venv\Scripts\Activate     # For Windows (PowerShell)
+    ```
 
 3. **Install Dependencies:**
    ```bash
