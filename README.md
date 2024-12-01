@@ -92,7 +92,8 @@ Each task generates a plot of the efficient frontier, visualizing the trade-off 
 - **Task 4:** Portfolios allowing short selling.
 
 ### **Example Plot**
-(You can add a sample plot image here to make it visually appealing.)
+![task1_plot](https://github.com/user-attachments/assets/f8544705-b1f8-42ad-9ee4-b3ccfc2963b5)
+
 
 ---
 
