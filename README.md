@@ -1,100 +1,90 @@
+# Portfolio Optimization
 
-# **Portfolio Optimization**
+Markowitz mean-variance portfolio optimization using Python and Gurobi. The project explores four distinct optimization scenarios that represent common strategies in investment portfolio management, each generating an efficient frontier to visualize the risk-return trade-off.
 
-This project demonstrates various portfolio optimization strategies to balance risk (variance) and return using Python and Gurobi. The project explores four distinct tasks that represent common scenarios in investment portfolio management.
-
----
-
-## **Features**
-1. **Task 1:** Fully invested portfolios (sum of allocations = 1).
-2. **Task 2:** Partial investment portfolios (sum of allocations ≤ 1).
-3. **Task 3:** Portfolios with a target return constraint (return ≥ target).
-4. **Task 4:** Portfolios allowing short selling (negative allocations allowed).
-
-Each task generates an efficient frontier, showcasing the trade-off between risk and return.
+> Developed as part of the **Big Data for Computational Finance (CF969)** module at the University of Essex.
 
 ---
 
-## **Getting Started**
+## Overview
 
-Follow these instructions to set up and run the project on your local machine.
+The project constructs and solves quadratic optimization problems to find portfolios that minimize risk (variance) for a range of target returns. A covariance matrix is built from simulated asset data, and Gurobi is used as the solver.
 
-### **Prerequisites**
-- Python 3.8 or higher
-- Gurobi installed and licensed
-- Virtual environment (optional but recommended)
+**Four optimization scenarios are explored:**
 
----
+1. **Fully invested portfolios** — all capital must be allocated (weights sum to 1)
+2. **Partial investment** — capital can remain uninvested (weights sum ≤ 1), modeling a risk-free asset
+3. **Minimum return constraint** — portfolios must meet or exceed a target return (≥ r)
+4. **Short selling allowed** — negative weights are permitted, expanding the feasible region
 
-### **Setup Instructions**
-
-1. **Clone the Repository:**
-   ```bash
-    git clone https://github.com/melekkuru/portfolio_optimization.git
-    cd portfolio_optimization
-
-   ```
-
-2. **Create and Activate a Virtual Environment:**
-    ```
-    python -m venv venv
-   source venv/bin/activate    # For macOS/Linux
-   venv\Scripts\activate       # For Windows (Command Prompt)
-   .\venv\Scripts\Activate     # For Windows (PowerShell)
-    ```
-
-3. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the Project:**
-   Execute the `main.py` script to run all tasks:
-   ```bash
-   python main.py
-   ```
+Each scenario produces an efficient frontier and highlights the minimum risk portfolio.
 
 ---
 
-## **Project Structure**
+## Results
+
+| Scenario | Key insight |
+|----------|-------------|
+| Task 1 — Fully invested | Classic efficient frontier; minimum risk at σ ≈ 1.0, return ≈ 5.0 |
+| Task 2 — Partial investment | Frontier extends to lower risk levels (σ starts near 0.5) due to cash option |
+| Task 3 — Return ≥ target | Similar shape to Task 1 but portfolios can exceed the target return |
+| Task 4 — Short selling | Tighter frontier; short positions enable hedging and lower overall risk |
+
+### Example — Efficient frontier (Task 1)
+
+![Efficient Frontier](plots/task1_plot.png)
+
+---
+
+## Project structure
 
 ```
 portfolio_optimization/
-│
-├── src/                # Source code for individual tasks and utilities
-│   ├── task1.py        # Task 1: Fully invested portfolios
-│   ├── task2.py        # Task 2: Partial investment portfolios
-│   ├── task3.py        # Task 3: Target return portfolios
-│   ├── task4.py        # Task 4: Portfolios with short selling
-│   ├── utils.py        # Shared utilities (e.g., plotting)
-│
-├── notebook/           # Jupyter Notebook for interactive analysis
+├── src/
+│   ├── task1.py          # Fully invested portfolios
+│   ├── task2.py          # Partial investment portfolios
+│   ├── task3.py          # Target return constraint
+│   ├── task4.py          # Short selling allowed
+│   └── utils.py          # Shared plotting utilities
+├── notebook/
 │   └── portfolio_optimization.ipynb
-│
-├── plots/              # Folder to store generated plot images
-│   ├── task1_plot.png
-│   ├── task2_plot.png
-│   ├── task3_plot.png
-│   └── task4_plot.png
-│
-├── README.md           # Documentation for the project
-├── requirements.txt    # Required Python libraries
-├── main.py             # Main script to execute all tasks
+├── plots/                # Generated efficient frontier plots
+├── main.py               # Run all tasks
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## **Results**
+## Getting started
 
-Each task generates a plot of the efficient frontier, visualizing the trade-off between risk and return for various portfolio configurations:
-- **Task 1:** Fully invested portfolios.
-- **Task 2:** Partial investment portfolios.
-- **Task 3:** Portfolios meeting or exceeding a target return.
-- **Task 4:** Portfolios allowing short selling.
+```bash
+# Clone the repository
+git clone https://github.com/melekkuru/portfolio_optimization.git
+cd portfolio_optimization
 
-### **Example Plot**
-![task1_plot](https://github.com/user-attachments/assets/f8544705-b1f8-42ad-9ee4-b3ccfc2963b5)
+# Create a virtual environment (optional)
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows
 
+# Install dependencies
+pip install -r requirements.txt
+
+# Run all tasks
+python main.py
+```
+
+**Prerequisites:** Python 3.8+ and a valid [Gurobi license](https://www.gurobi.com/academia/academic-program-and-licenses/) (free for academic use).
 
 ---
 
+## Technologies
+
+Python · Gurobi · NumPy · Matplotlib
+
+---
+
+## License
+
+This project is for educational purposes. Feel free to use it as a reference.
